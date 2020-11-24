@@ -28,10 +28,7 @@ app.get('/recipes/:ingredient', function (req, res) {
 })
 
 
-app.get('/', function (request, response) {
-    console.log("Someone has come into the server. Brace yourselves.")
-    response.send("Ending the cycle, thanks for visiting")
-})
+
 
 
 
