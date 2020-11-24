@@ -16,15 +16,24 @@ const json = {
 
 app.get('/recipes/:ingredient', function (req, res) {
     const ingredient = req.params.ingredient
-    
     urllib.request(`https://recipes-goodness.herokuapp.com/recipes/${ingredient}`, function(err, res){
     const result = JSON.parse(res.toString())
      json.data = result.results
     
     console.log(json.data)
 })
+    const recipes = json.data
+    .map(r =>{
+        return {
+            ingredients : r.ingredients,
+            title : r.title,
+            thumbnail: r.thumbnail,
+            href: r.href,
+        }
+    })
+    
 
-    res.send(json.data)
+    res.send(recipes)
 })
 
 
